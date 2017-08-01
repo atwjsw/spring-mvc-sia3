@@ -81,6 +81,7 @@ public class SimpleJdbcSupportSpitterDao extends SimpleJdbcDaoSupport implements
             spitter.getFullName(),
             spitter.getEmail(),
             spitter.isUpdateByEmail());
+    System.out.println("queryForIdentity(): " + queryForIdentity());
     spitter.setId(queryForIdentity());
   }
   //<end id="java_addSpitter" />

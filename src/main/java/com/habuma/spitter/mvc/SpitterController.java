@@ -88,8 +88,7 @@ public class SpitterController {
     }
 
     @RequestMapping(value="/{username}", method=RequestMethod.GET)
-    public String showSpitterProfile(@PathVariable String username,
-                                     Model model) {
+    public String showSpitterProfile(@PathVariable String username, Model model) {
         model.addAttribute(spitterDao.getSpitterByUsername(username));
         return "spitters/view";
     }

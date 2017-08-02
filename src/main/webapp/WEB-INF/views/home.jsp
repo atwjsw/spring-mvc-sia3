@@ -12,10 +12,8 @@
   <ol class="spittle-list">
     <c:forEach var="spittle" items="${spittles}"> <!--<co id="cp_foreach_spittles"/>-->
     
-      <s:url value="/spitters/{spitterName}" 
-                  var="spitter_url" >    <!--<co id="cp_spitter_url"/>-->
-        <s:param name="spitterName" 
-                      value="${spittle.spitter.username}" />
+      <s:url value="/spitters/{spitterName}" var="spitter_url" >    <!--<co id="cp_spitter_url"/>-->
+        <s:param name="spitterName" value="${spittle.spitter.username}" />
       </s:url>
 
       <li><span class="spittleListImage">

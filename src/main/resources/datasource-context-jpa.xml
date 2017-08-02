@@ -11,12 +11,16 @@
     <jdbc:script location="classpath:data.sql"/>
   </jdbc:embedded-database>
 
-  <!--<start id="bean_jpa_emf"/>--> 
+  <!--<start id="bean_jpa_emf"/>-->
   <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
     <property name="dataSource" ref="dataSource" />
     <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
   </bean>
   <!--<end id="bean_jpa_emf"/>-->
+
+  <!--<bean id="emf" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">-->
+    <!--<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />-->
+  <!--</bean>-->
 
   <!-- <start id="bean.jpa_emf_app" />
   <bean id="emf" 

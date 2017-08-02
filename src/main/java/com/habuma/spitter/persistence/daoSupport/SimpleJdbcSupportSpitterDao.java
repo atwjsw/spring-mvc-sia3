@@ -92,7 +92,6 @@ public class SimpleJdbcSupportSpitterDao extends SimpleJdbcDaoSupport implements
             spitter.getPassword(),
             spitter.getFullName(), 
             spitter.getEmail(),
-
             spitter.getId());
   }
 
@@ -110,12 +109,12 @@ public class SimpleJdbcSupportSpitterDao extends SimpleJdbcDaoSupport implements
             new ParameterizedRowMapper<Spittle>() {
               public Spittle mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Spittle spittle = new Spittle();
-                System.out.println(spittle);
+//                System.out.println(spittle);
                 spittle.setId(rs.getLong(1));
                 spittle.setSpitter(getSpitterById(rs.getLong(2)));
                 spittle.setText(rs.getString(3));
                 spittle.setWhen(rs.getDate(4));
-
+                System.out.println(spittle);
                 return spittle;
               }
             }, dt.toDate());

@@ -34,7 +34,7 @@ public class PersistenceDaoSupportTest {
 
     @Test
     public void testGetSpitterById() {
-        Spitter spitter = spitterDao.getSpitterById(3L);
+        Spitter spitter = spitterDao.getSpitterById(2L);
         System.out.println(spitter);
         assertEquals("habuma", spitter.getUsername());
         assertEquals(Long.valueOf(1), spitter.getId());
@@ -53,5 +53,14 @@ public class PersistenceDaoSupportTest {
 //        System.out.println(id);
 //
 //    }
+
+    @Test
+    public void testGetSpitterByUsername() {
+        Spitter spitter = spitterDao.getSpitterByUsername("habuma");
+        System.out.println(spitter);
+        assertEquals("habuma", spitter.getUsername());
+        assertEquals(Long.valueOf(1), spitter.getId());
+    }
+
 
 }

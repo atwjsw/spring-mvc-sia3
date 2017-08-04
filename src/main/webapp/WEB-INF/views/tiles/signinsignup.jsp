@@ -50,7 +50,7 @@
     <s:url value="/static/j_spring_security_logout" var="logout_url" />
 	  <a href="${logout_url}">Logout</a>
 	  <sec:authorize url="/admin">
-      <s:url value="/admin" var="admin_url" />
+      	<s:url value="/admin" var="admin_url" />
 	    <br/><a href="${admin_url}">Admin</a>
 	  </sec:authorize>
 	</sec:authorize>

@@ -15,7 +15,7 @@
                 authentication-failure-url="/login?login_error=t"/>
         <logout logout-url="/static/j_spring_security_logout"/>
         <intercept-url pattern="/resources/**" access="isAnonymous()"/>
-        <intercept-url pattern="/spitters/**" access="isAnonymous()" />
+        <intercept-url pattern="/spitters/**" access="isAnonymous()"/>
         <intercept-url pattern="/login" access="isAnonymous()"/>
         <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
         <!--<intercept-url pattern="/spitters/**" access="isAnonymous()" requires-channel="https"/>-->
@@ -24,31 +24,20 @@
         <!--<intercept-url pattern="/home" access="isAnonymous()"/>-->
         <!--<intercept-url pattern="/rawjsp/**" access="isAnonymous()"/>-->
         <intercept-url pattern="/**" access="hasRole('ROLE_SPITTER')"/>
+        <remember-me key="spitterKey" token-validity-seconds="2419200"/>
     </http>
-
-    <!--<http auto-config="true">-->
-        <!--<intercept-url pattern="/admin**" access="ROLE_USER" />-->
-
-        <!--<form-login-->
-                <!--login-page="/login"-->
-                <!--default-target-url="/welcome"-->
-                <!--authentication-failure-url="/login?error"-->
-                <!--username-parameter="username"-->
-                <!--password-parameter="password" />-->
-        <!--<logout logout-success-url="/login?logout"  />-->
-        <!--&lt;!&ndash; enable csrf protection &ndash;&gt;-->
-        <!--<csrf/>-->
-    <!--</http>-->
 
     <authentication-manager>
         <authentication-provider user-service-ref="userService" />
     </authentication-manager>
 
-    <user-service id="userService">
-        <user name="habuma" password="123" authorities="ROLE_SPITTER,ROLE_ADMIN"/>
-        <user name="spitter" password="123" authorities="ROLE_SPITTER"/>
-        <user name="admin" password="admin"   authorities="ROLE_ADMIN"/>
-    </user-service>
+    <!--<user-service id="userService">-->
+    <!--<user name="habuma" password="123" authorities="ROLE_SPITTER,ROLE_ADMIN"/>-->
+    <!--<user name="spitter" password="123" authorities="ROLE_SPITTER"/>-->
+    <!--<user name="admin" password="admin"   authorities="ROLE_ADMIN"/>-->
+    <!--</user-service>-->
 
-
+    <jdbc-user-service id="userService" data-source-ref="dataSource"
+         users-by-username-query="select username,password,true from spitter where username=?"
+         authorities-by-username-query="select username,'ROLE_SPITTER' from spitter where username=?"/>
 </beans:beans>

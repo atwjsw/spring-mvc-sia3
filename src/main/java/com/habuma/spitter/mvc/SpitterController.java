@@ -39,7 +39,6 @@ public class SpitterController {
     @RequestMapping(method = RequestMethod.GET, params = "new")
     public String createSpitterProfile(Model model) {
         System.out.println(model);
-        model.addAttribute(new Spittle());
         model.addAttribute(new Spitter());
         return "spitters/edit";
     }

@@ -16,7 +16,7 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
-      /WEB-INF/spitter-security-customform.xml
+      /WEB-INF/spitter-security-customform-jdbc.xml
       <!--classpath:datasource-context-jpa.xml-->
       classpath:datasource-context-jdbcDaoSupport.xml
     </param-value>

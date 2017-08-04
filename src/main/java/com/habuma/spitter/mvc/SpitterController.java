@@ -44,13 +44,13 @@ public class SpitterController {
         return "spitters/edit";
     }
 
-    @RequestMapping(method = RequestMethod.POST, headers="Accept=application/json")
-    public @ResponseBody Spitter addSpitterFromAPI(@RequestBody Spitter spitter, HttpServletResponse response) {
-        System.out.println("in addSpitterFromApi" + spitter);
-        spitterDao.addSpitter(spitter);
-        response.setHeader("Location", "http://localhost:8080");
-        return spitter;
-    }
+//    @RequestMapping(method = RequestMethod.POST, headers="Accept=application/json")
+//    public @ResponseBody Spitter addSpitterFromAPI(@RequestBody Spitter spitter, HttpServletResponse response) {
+//        System.out.println("in addSpitterFromApi" + spitter);
+//        spitterDao.addSpitter(spitter);
+//        response.setHeader("Location", "http://localhost:8080");
+//        return spitter;
+//    }
 
     private void validateImage(MultipartFile image) {
         if (!image.getContentType().equals("image/jpeg")) {
@@ -85,7 +85,7 @@ public class SpitterController {
         return spitterDao.getSpitterByUsername(username);
     }
 
-//    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public String addSpitterFromForm(@Valid Spitter spitter,
                                      BindingResult bindingResult,
                                      @RequestParam(value = "image", required = false) MultipartFile image) {

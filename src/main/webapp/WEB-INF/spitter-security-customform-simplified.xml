@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns="http://www.springframework.org/schema/security"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+    <http auto-config="true" use-expressions="false">
+        <!--<intercept-url pattern="/admin**" access="ROLE_SPITTER" />-->
+        <form-login
+                login-processing-url="/static/j_spring_security_check"
+                login-page="/login"
+                authentication-failure-url="/login?login_error=t"/>
+        <logout logout-url="/static/j_spring_security_logout"/>
+        <intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/rawjsp/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/**" access="ROLE_SPITTER"/>
+    </http>
+
+    <!--<http auto-config="true">-->
+        <!--<intercept-url pattern="/admin**" access="ROLE_USER" />-->
+
+        <!--<form-login-->
+                <!--login-page="/login"-->
+                <!--default-target-url="/welcome"-->
+                <!--authentication-failure-url="/login?error"-->
+                <!--username-parameter="username"-->
+                <!--password-parameter="password" />-->
+        <!--<logout logout-success-url="/login?logout"  />-->
+        <!--&lt;!&ndash; enable csrf protection &ndash;&gt;-->
+        <!--<csrf/>-->
+    <!--</http>-->
+
+    <authentication-manager>
+        <authentication-provider user-service-ref="userService" />
+    </authentication-manager>
+
+    <user-service id="userService">
+        <user name="habuma" password="123" authorities="ROLE_SPITTER,ROLE_ADMIN"/>
+        <user name="spitter" password="123" authorities="ROLE_SPITTER"/>
+        <user name="admin" password="admin"   authorities="ROLE_ADMIN"/>
+    </user-service>
+
+
+</beans:beans>

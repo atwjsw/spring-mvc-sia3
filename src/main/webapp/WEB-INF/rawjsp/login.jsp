@@ -4,7 +4,7 @@
 
     <p>
         If you've been using Spitter from your phone,
-        then that's amazing...we don't support IM yet. xxxx
+        then that's amazing...we don't support IM yet.
     </p>
 
     <spring:url var="authUrl" value="/static/j_spring_security_check" /><!--<co id="co_securityCheckPath"/>-->
@@ -45,14 +45,11 @@
                     <th></th>
                     <td><input name="commit" type="submit" value="Sign In"/></td>
                 </tr>
-                <td>
-                    <th></th>
-                    <spring:url var="logoutUrl" value="/static/j_spring_security_logout" />
-                    <td><a href="${logoutUrl}">LOGOUT</a></td>
             </table>
         </fieldset>
     </form>
-
+    <spring:url var="logoutUrl" value="/static/j_spring_security_logout"/>
+    <h2><a href="${logoutUrl}">LOGOUT</a></h2>
     <script type="text/javascript">
         document.getElementById('username_or_email').focus();
     </script>

@@ -1,8 +1,8 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
-<%--<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>--%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <div>        
-  <%--<sec:authorize access="!isAuthenticated()">--%>
+  <sec:authorize access="!isAuthenticated()">
 			
 		<div class="msg">
 		  <h3>Please Sign In!</h3>
@@ -10,6 +10,11 @@
    
 		<form class="signin" action="<s:url value="/static/j_spring_security_check"/>" method="post">
 		  <fieldset>
+			  <div>
+			  <c:if test="${not empty error}">
+				  <div class="error">${error}</div>
+			  </c:if>
+			  </div>
 		    <div>
 		      <label for="j_username">Username or Email</label>
 		      <input id="email" type="text" name="j_username"/>
@@ -35,20 +40,18 @@
 		  <br/>
 		  It's fast and easy!
 		</div>
-	<%--</sec:authorize>--%>
+	</sec:authorize>
 	
-  <%--<sec:authorize access="isAuthenticated()">--%>
+  <sec:authorize access="isAuthenticated()">
     <s:url value="/resources/images" var="images_url" />
 	  <img src="${images_url}/spitter_me.jpg" align="middle"/>
-	  <span><sec:authentication 
-	        property="principal.username" /></span>
+	  <span><sec:authentication property="principal.username" /></span>
 	  <br/>
-    <s:url value="/static/j_spring_security_logout" 
-                var="logout_url" /> 
+    <s:url value="/static/j_spring_security_logout" var="logout_url" />
 	  <a href="${logout_url}">Logout</a>
-	  <%--<sec:authorize url="/admin">--%>
+	  <sec:authorize url="/admin">
       <s:url value="/admin" var="admin_url" />
 	    <br/><a href="${admin_url}">Admin</a>
-	  <%--</sec:authorize>--%>
-	<%--</sec:authorize>--%>
+	  </sec:authorize>
+	</sec:authorize>
 </div>

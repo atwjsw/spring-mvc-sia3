@@ -1,6 +1,6 @@
 <div>
 
-<!-- 
+    <!--
 	<form:form modelAttribute="spittle" method="POST">
 	  <p><spring:message code="label.spittle" 
 	                     text="Enter spittle:"/></p>

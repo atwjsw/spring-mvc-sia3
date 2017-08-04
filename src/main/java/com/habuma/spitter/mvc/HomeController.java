@@ -1,6 +1,5 @@
 package com.habuma.spitter.mvc;
 
-import com.habuma.spitter.domain.Spitter;
 import com.habuma.spitter.domain.Spittle;
 //import com.habuma.spitter.service.SpitterService;
 import com.habuma.spitter.persistence.jdbc.SpitterDao;
@@ -12,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 //import javax.inject.Inject;
 import javax.inject.Inject;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.Map;
 
 @Controller
